@@ -21,11 +21,16 @@ jobs:
         dotnet-version: 8.0
 
     - name: Publish
-      run: dotnet publish ClientServerSimpleApp1/ClientServerSimpleApp1.csproj -c Release -o ./publish
+      shell: cmd
+      run: |
+        dotnet publish -c Release -o .\publish
 
     - name: Deploy Locally
       shell: cmd
-      run: xcopy ./publish C:\inetpub\wwwroot\ClientServerSimpleApp2 /E /I /Y
+      run: |
+        iisreset /stop
+        xcopy /s /y .\publish\* c:\inetpub\wwwroot\ClientServerSimpleApp1
+        iisreset /start
 
 
   
