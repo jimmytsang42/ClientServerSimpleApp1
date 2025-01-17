@@ -21,8 +21,8 @@ jobs:
         dotnet-version: 8.0
 
     - name: Publish
-      run: dotnet publish -c Release -o ./publish
+      run: dotnet publish ClientServerSimpleApp1/ClientServerSimpleApp1.csproj -c Release -o ./publish
 
     - name: Deploy Locally
       run: |
-        xcopy /E /I ./publish C:\inetpub\wwwroot\ClientServerSimpleApp1
+        xcopy ./publish C:\inetpub\wwwroot\ClientServerSimpleApp2 /E /H /Y
