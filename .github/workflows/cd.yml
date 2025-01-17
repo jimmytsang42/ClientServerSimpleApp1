@@ -24,6 +24,8 @@ jobs:
       run: dotnet publish ClientServerSimpleApp1/ClientServerSimpleApp1.csproj -c Release -o ./publish
 
     - name: Deploy Locally
-      run: robocopy ./publish C:\inetpub\wwwroot\ClientServerSimpleApp1 /E /MIR
+      shell: cmd
+      run: xcopy ./publish C:\inetpub\wwwroot\ClientServerSimpleApp2 /E /I /Y
+
 
   
